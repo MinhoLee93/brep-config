@@ -1,4 +1,4 @@
-example.property: "dev"
+example.property: "default"
 spring :
   datasource:
     url: jdbc:mariadb://brep-rdb-01.cpu6sn7n18c0.ap-northeast-2.rds.amazonaws.com:3306/brep_rdb_01
