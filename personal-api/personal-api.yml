@@ -24,3 +24,23 @@ management:
     web:
       exposure:
         include: "*"
+hystrix:
+  threadpool:
+    getAllMembers:
+      coreSize: 30
+      maxQueueSize: 10
+  command:
+    getAllMembers:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+      circuitBreaker:
+        requestVolumeThreshold: 1
+        errorThresholdPercentage: 10
+        sleepWindowInMilliseconds: 1000
+        enabled: true
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 1000
+          numBuckets: 1
