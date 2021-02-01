@@ -1,4 +1,5 @@
 example.property: "default"
+
 spring :
   datasource:
     url: jdbc:mariadb://brep-rdb-01.cpu6sn7n18c0.ap-northeast-2.rds.amazonaws.com:3306/brep_rdb_01
@@ -11,6 +12,7 @@ spring :
     hibernate:
       ddl-auto: update
       show-sql: true
+
 eureka:
   instance:
     prefer-ip-address: true
@@ -19,6 +21,7 @@ eureka:
     fetch-registry: true
     service-url:
       default-zone: http://localhost:8761/eureka/
+
 management:
   endpoint:
     hystrix:
@@ -28,9 +31,16 @@ management:
     web:
       exposure:
         include: "*"
+  health:
+    circuitbreakers:
+      enabled: true
+    ratelimiters:
+      enabled: true
+
 feign:
   hystrix:
     enabled: true
+
 hystrix:
   dashboard:
     proxy-stream-allow-list: localhost
@@ -53,6 +63,66 @@ hystrix:
         rollingStats:
           timeInMilliseconds: 1000
           numBuckets: 1
+
 turbine:
   cluster-name-expression: new String("default")
   app-config: personal-api, meta-api
+
+resilience4j.circuitbreaker:
+  instances:
+    test:
+      registerHealthIndicator: true
+      ringBufferSizeInClosedState: 3
+      ringBufferSizeInHalfOpenState: 3
+      waitDurationInOpenState: 10s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+      recordExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+      ignoreExceptions:
+        - java.io.IOException
+
+#resilience4j.circuitbreaker:
+#  configs:
+#    default:
+#      ringBufferSizeInClosedState: 100
+#      ringBufferSizeInHalfOpenState: 10
+#      waitDurationInOpenState: 10000
+#      failureRateThreshold: 60
+#      eventConsumerBufferSize: 10
+#      registerHealthIndicator: true
+#    someShared:
+#      ringBufferSizeInClosedState: 50
+#      ringBufferSizeInHalfOpenState: 10
+#  instances:
+#    backendA:
+#      baseConfig: default
+#      waitDurationInOpenState: 5000
+#    backendB:
+#      baseConfig: someShared
+
+resilience4j.ratelimiter:
+  instances:
+    test:
+      limitForPeriod: 5
+      limitRefreshPeriod: 10s
+      timeoutDuration: 3s
+
+resilience4j.retry:
+  instances:
+    test:
+      maxRetryAttempts: 3
+      waitDuration: 10s
+
+resilience4j.bulkhead:
+  instances:
+    test:
+      maxWaitDuration: 10ms
+      maxConcurrentCall: 20
+
+resilience4j.thread-pool-bulkhead:
+  instances:
+    test:
+      maxThreadPoolSize: 1
+      coreThreadPoolSize: 1
+      queueCapacity: 1
