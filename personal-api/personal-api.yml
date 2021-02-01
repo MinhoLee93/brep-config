@@ -53,3 +53,6 @@ hystrix:
         rollingStats:
           timeInMilliseconds: 1000
           numBuckets: 1
+turbine:
+  cluster-name-expression: new String("default")
+  app-config: personal-api, meta-api
