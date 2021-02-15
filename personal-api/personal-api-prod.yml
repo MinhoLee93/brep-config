@@ -11,6 +11,16 @@ spring :
     hibernate:
       ddl-auto: update
       show-sql: true
+  stream:
+    bindings:
+      input:
+        destination: metaChangeTopic
+        content-type: application/json
+        group: personalGroup
+    kafka:
+      binder:
+        zkNodes: localhost
+        brokers: localhost
 eureka:
   instance:
     prefer-ip-address: true
