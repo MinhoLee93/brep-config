@@ -1,0 +1,30 @@
+example.property: "default"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 5555
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  ignoredServices: "*"
+  routes:
+    personal:
+      path: /personal/**
+      serviceId: personal-api
+      stripPrefix: false
+    meta:
+      path: /meta/**
+      serviceId: meta-api
+      stripPrefix: false
