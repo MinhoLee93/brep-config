@@ -18,8 +18,8 @@ spring :
         content-type: application/json
     kafka:
       binder:
-        zkNodes: zookeeper
-        brokers: kafka
+        zkNodes: 127.0.0.1
+        brokers: 127.0.0.1
 eureka:
   instance:
     prefer-ip-address: true
