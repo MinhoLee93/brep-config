@@ -20,8 +20,8 @@ spring :
         group: personalGroup
     kafka:
       binder:
-        zkNodes: 172.31.44.144
-        brokers: 172.31.44.144
+        zkNodes: localhost
+        brokers: localhost
 eureka:
   instance:
     prefer-ip-address: true
