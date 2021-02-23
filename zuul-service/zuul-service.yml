@@ -28,3 +28,6 @@ zuul:
       path: /meta/**
       serviceId: meta-api
       stripPrefix: false
+spring:
+  zipkin:
+    base-url: http://localhost:9411

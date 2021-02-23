@@ -13,6 +13,9 @@ spring :
       show-sql: true
   stream:
     bindings:
+      test:
+        destination: testTopic
+        content-type: application/json
       output:
         destination: metaChangeTopic
         content-type: application/json
@@ -20,6 +23,8 @@ spring :
       binder:
         zkNodes: 127.0.0.1
         brokers: 127.0.0.1
+  zipkin:
+    base-url: http://localhost:9411
 eureka:
   instance:
     prefer-ip-address: true
