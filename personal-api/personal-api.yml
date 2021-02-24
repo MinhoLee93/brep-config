@@ -14,10 +14,9 @@ spring :
       show-sql: true
   stream:
     bindings:
-      input:
+      output:
         destination: metaChangeTopic
         content-type: application/json
-        group: personalGroup
     kafka:
       binder:
         zkNodes: 127.0.0.1
