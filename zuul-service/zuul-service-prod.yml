@@ -20,12 +20,7 @@ eureka:
 zuul:
   ignoredServices: "*"
   routes:
-    personal:
-      path: /personal/**
-      serviceId: personal-api
-      stripPrefix: false
-    meta:
-      path: /meta/**
-      serviceId: meta-api
-      stripPrefix: false
+    path: /orchestration/**
+    serviceId: orchestration-api
+    stripPrefix: false
 
