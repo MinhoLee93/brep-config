@@ -97,9 +97,9 @@ feign:
 #      ringBufferSizeInClosedState: 100
 #      ringBufferSizeInHalfOpenState: 10
 #      waitDurationInOpenState: 10000
-#      failureRateThreshold: 60
+#      failureRateThreshold: 10
 #      eventConsumerBufferSize: 10
-#      registerHealthIndicator: true
+#      registerHealthIndicator: false
 #    someShared:
 #      ringBufferSizeInClosedState: 50
 #      ringBufferSizeInHalfOpenState: 10
