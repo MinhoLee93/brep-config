@@ -89,6 +89,9 @@ resilience4j:
         waitDurationInOpenState: 5s
         failureRateThreshold: 50
         eventConsumerBufferSize: 10
+    instances:
+      test:
+        baseConfig: default
 #      recordExceptions:
 #        - org.springframework.web.client.HttpServerErrorException
 #      ignoreExceptions:
