@@ -141,3 +141,8 @@ resilience4j:
 #      maxThreadPoolSize: 1
 #      coreThreadPoolSize: 1
 #      queueCapacity: 1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
