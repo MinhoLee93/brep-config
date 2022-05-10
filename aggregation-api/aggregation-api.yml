@@ -1,0 +1,137 @@
+example.property: "default"
+
+spring :
+#  datasource:
+#    url: jdbc:mariadb://brep-rdb-01.cpu6sn7n18c0.ap-northeast-2.rds.amazonaws.com:3306/brep_rdb_01
+#    driver-class-name : org.mariadb.jdbc.Driver
+#    username: minholee93
+#    password: markminholee93
+#  jpa:
+#    generate-ddl : true
+#    show-sql : true
+#    hibernate:
+#      ddl-auto: update
+#      show-sql: true
+#  stream:
+#    bindings:
+#      output:
+#        destination: metaChangeTopic
+#        content-type: application/json
+#    kafka:
+#      binder:
+#        zkNodes: 127.0.0.1
+#        brokers: 127.0.0.1
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+
+#management:
+#  endpoint:
+#    hystrix:
+#      stream:
+#        enabled: true
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#  health:
+#    circuitbreakers:
+#      enabled: true
+#    ratelimiters:
+#      enabled: true
+
+#feign:
+#  hystrix:
+#    enabled: true
+#
+#hystrix:
+#  dashboard:
+#    proxy-stream-allow-list: localhost
+#  threadpool:
+#    getAllMembers:
+#      coreSize: 30
+#      maxQueueSize: 10
+#  command:
+#    getAllMembers:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 1000
+#      circuitBreaker:
+#        requestVolumeThreshold: 1
+#        errorThresholdPercentage: 10
+#        sleepWindowInMilliseconds: 1000
+#        enabled: true
+#      metrics:
+#        rollingStats:
+#          timeInMilliseconds: 1000
+#          numBuckets: 1
+
+#turbine:
+#  cluster-name-expression: new String("default")
+#  app-config: personal-api, meta-api
+
+#resilience4j.circuitbreaker:
+#  instances:
+#    test:
+#      registerHealthIndicator: true
+#      ringBufferSizeInClosedState: 3
+#      ringBufferSizeInHalfOpenState: 3
+#      waitDurationInOpenState: 10s
+#      failureRateThreshold: 50
+#      eventConsumerBufferSize: 10
+#      recordExceptions:
+#        - org.springframework.web.client.HttpServerErrorException
+#      ignoreExceptions:
+#        - java.io.IOException
+
+#resilience4j.circuitbreaker:
+#  configs:
+#    default:
+#      ringBufferSizeInClosedState: 100
+#      ringBufferSizeInHalfOpenState: 10
+#      waitDurationInOpenState: 10000
+#      failureRateThreshold: 60
+#      eventConsumerBufferSize: 10
+#      registerHealthIndicator: true
+#    someShared:
+#      ringBufferSizeInClosedState: 50
+#      ringBufferSizeInHalfOpenState: 10
+#  instances:
+#    backendA:
+#      baseConfig: default
+#      waitDurationInOpenState: 5000
+#    backendB:
+#      baseConfig: someShared
+
+#resilience4j.ratelimiter:
+#  instances:
+#    test:
+#      limitForPeriod: 5
+#      limitRefreshPeriod: 10s
+#      timeoutDuration: 3s
+#
+#resilience4j.retry:
+#  instances:
+#    test:
+#      maxRetryAttempts: 3
+#      waitDuration: 10s
+#
+#resilience4j.bulkhead:
+#  instances:
+#    test:
+#      maxWaitDuration: 10ms
+#      maxConcurrentCall: 20
+#
+#resilience4j.thread-pool-bulkhead:
+#  instances:
+#    test:
+#      maxThreadPoolSize: 1
+#      coreThreadPoolSize: 1
+#      queueCapacity: 1
