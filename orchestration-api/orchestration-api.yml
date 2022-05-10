@@ -77,15 +77,18 @@ feign:
 #  cluster-name-expression: new String("default")
 #  app-config: personal-api, meta-api
 
-resilience4j.circuitbreaker:
-  instances:
-    test:
-      registerHealthIndicator: true
-      ringBufferSizeInClosedState: 3
-      ringBufferSizeInHalfOpenState: 3
-      waitDurationInOpenState: 10s
-      failureRateThreshold: 10
-      eventConsumerBufferSize: 10
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberofCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
 #      recordExceptions:
 #        - org.springframework.web.client.HttpServerErrorException
 #      ignoreExceptions:
