@@ -84,12 +84,12 @@ resilience4j.circuitbreaker:
       ringBufferSizeInClosedState: 3
       ringBufferSizeInHalfOpenState: 3
       waitDurationInOpenState: 10s
-      failureRateThreshold: 50
+      failureRateThreshold: 10
       eventConsumerBufferSize: 10
-      recordExceptions:
-        - org.springframework.web.client.HttpServerErrorException
-      ignoreExceptions:
-        - java.io.IOException
+#      recordExceptions:
+#        - org.springframework.web.client.HttpServerErrorException
+#      ignoreExceptions:
+#        - java.io.IOException
 
 #resilience4j.circuitbreaker:
 #  configs:
