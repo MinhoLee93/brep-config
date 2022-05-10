@@ -34,3 +34,7 @@ eureka:
 #    web:
 #      exposure:
 #        include: "*"
+
+feign:
+  hystrix:
+    enabled: true
