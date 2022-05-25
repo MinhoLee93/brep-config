@@ -1,11 +1,11 @@
 example.property: "default"
 spring :
-#  jpa:
-#    generate-ddl : true
-#    show-sql : true
-#    hibernate:
-#      ddl-auto: update
-#      show-sql: true
+  jpa:
+    generate-ddl : true
+    show-sql : true
+    hibernate:
+      ddl-auto: update
+      show-sql: true
 #  stream:
 #    bindings:
 #      test:
