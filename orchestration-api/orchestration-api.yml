@@ -146,3 +146,37 @@ management:
     web:
       exposure:
         include: "*"
+#
+#  cloud:
+#    stream:
+#      /* Message Channel 정보 */
+#      bindings:
+#        "kafka.member.event":
+#          destination: member.event.topic
+#          contentType: application/json
+#          binder: kafka-member
+#      /* kafka 기본 정보 */
+#      binders:
+#        kafka-member:
+#          type: kafka
+#          environment:
+#            spring:
+#              cloud:
+#                stream:
+#                  kafka:
+#                    binder:
+#                      brokers: "172.21.100.123:9092,172.21.100.456:9092,172.21.100.789:9092"
+#                      autoCreateTopics: false
+#      /* kafka producer configuration */
+#      kafka:
+#        bindings:
+#          "kafka.member.event":
+#            producer:
+#              configuration:
+#                acks: all
+#                compression.type: lz4
+#                linger.ms: 100
+#                batch.size: 16384
+#                max.in.flight.requests.per.connection: 5
+#                enable.idempotence: true
+#                retries: 1
