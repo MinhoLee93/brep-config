@@ -1,5 +1,8 @@
 example.property: "default"
 spring :
+  datasource:
+    url: jdbc:mariadb://bithumb-mariadb.cz3teicaop0a.ap-northeast-2.rds.amazonaws.com:3306/msa
+    driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     generate-ddl : true
     show-sql : true
